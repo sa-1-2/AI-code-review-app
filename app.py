@@ -1,12 +1,11 @@
 import streamlit as st
 from openai import OpenAI
 import os
-from dotenv import load_dotenv
-load_dotenv()
 import base64
 
 def get_openai_respone(prompt):
-    OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+    f = open('.openai_api_key.txt')
+    OPENAI_API_KEY = f.read()
     client = OpenAI(api_key = OPENAI_API_KEY)
     response = client.chat.completions.create(
         model="gpt-3.5-turbo-0125",
